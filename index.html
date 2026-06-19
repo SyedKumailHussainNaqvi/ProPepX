@@ -3,144 +3,233 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="ProPepX: an interpretable bidirectional interaction-aware transfer learning framework for joint residue-level protein–peptide binding-site prediction." />
+
   <title>ProPepX | Protein–Peptide Binding-Site Prediction</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <nav class="navbar">
-    <a href="#home" class="brand">ProPepX</a>
-    <button class="menu-toggle" aria-label="Open navigation">☰</button>
-    <div class="nav-links">
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="nav-logo">ProPepX</div>
+    <nav>
       <a href="#overview">Overview</a>
-      <a href="#architecture">Architecture</a>
+      <a href="#method">Method</a>
       <a href="#results">Results</a>
       <a href="#interpretability">Interpretability</a>
-      <a href="#validation">Validation</a>
-      <a href="#downloads">Resources</a>
+      <a href="#downloads">Downloads</a>
       <a href="#citation">Citation</a>
-    </div>
-  </nav>
-
-  <header id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Nature Machine Intelligence Submission · Protein–Peptide Recognition</p>
-      <h1>ProPepX: A Unified Framework for Interpretable Bidirectional Interaction-Aware Transfer Learning</h1>
-      <p class="subtitle">Joint residue-level prediction of peptide-binding residues on proteins and protein-binding residues on peptides through partner-conditioned molecular reasoning.</p>
-      <p class="authors">Syed Kumail Hussain Naqvi<sup>†</sup>, Chandra Sourav<sup>†</sup>, Kil To Chong<sup>*</sup>, Hilal Tayara<sup>*</sup></p>
-      <p class="affiliation">Jeonbuk National University · Juyoungbio Corp · †Equal contribution · *Corresponding authors</p>
-      <div class="hero-buttons">
-        <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank" class="btn primary">GitHub Code</a>
-        <a href="#downloads" class="btn secondary">Model Weights</a>
-        <a href="#citation" class="btn ghost">Citation</a>
-      </div>
-    </div>
+    </nav>
   </header>
 
-  <main>
-    <section id="overview" class="section split">
-      <div>
-        <span class="section-tag">Overview</span>
-        <h2>Reciprocal protein–peptide reasoning for residue-level interface discovery</h2>
-        <p>ProPepX explicitly models the reciprocal recognition process between interacting protein and peptide partners. Instead of treating interface prediction as two independent tasks, the framework uses bidirectional cross-attention and gated fusion to learn partner-aware residue representations for both molecular partners.</p>
-        <div class="feature-grid compact">
-          <div class="feature-card"><strong>Unified task</strong><span>Protein-side and peptide-side binding-site prediction in one architecture.</span></div>
-          <div class="feature-card"><strong>Interaction-aware transfer</strong><span>Pretraining transfers protein–peptide recognition knowledge to low-resource benchmarks.</span></div>
-          <div class="feature-card"><strong>Biological interpretability</strong><span>Cross-attention maps reveal residue coupling, motifs, and interface hotspots.</span></div>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>
+      ProPepX: A Unified Framework for Interpretable Bidirectional
+      Interaction-Aware Transfer Learning in Joint Residue-Level
+      Protein–Peptide Binding-Site Prediction
+    </h1>
+
+    <p class="subtitle">
+      Reciprocal protein–peptide reasoning for residue-level molecular recognition,
+      interface discovery, and interpretable binding-site prediction.
+    </p>
+
+    <p class="authors">
+      <strong>Syed Kumail Hussain Naqvi<sup>†</sup></strong>,
+      <strong>Chandra Sourav<sup>†</sup></strong>,
+      <strong>Kil To Chong<sup>*</sup></strong>,
+      <strong>Hilal Tayara<sup>*</sup></strong>
+    </p>
+
+    <p class="affiliation">
+      Jeonbuk National University · Juyoungbio Corp ·
+      <sup>†</sup>Equal contribution · <sup>*</sup>Corresponding authors
+    </p>
+
+    <div class="hero-buttons">
+      <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank">GitHub Code</a>
+      <a href="#" target="_blank">Model Weights</a>
+      <a href="#citation">Citation</a>
+    </div>
+  </section>
+
+  <!-- Overview with GIF -->
+  <section id="overview" class="section split">
+    <div>
+      <span class="section-tag">Overview</span>
+
+      <h2>
+        Reciprocal protein–peptide reasoning for residue-level interface discovery
+      </h2>
+
+      <p>
+        ProPepX explicitly models the reciprocal recognition process between
+        interacting protein and peptide partners. Instead of treating interface
+        prediction as two independent tasks, the framework uses bidirectional
+        cross-attention and gated fusion to learn partner-aware residue
+        representations for both molecular partners.
+      </p>
+
+      <div class="feature-grid compact">
+        <div class="feature-card">
+          <strong>Unified task</strong>
+          <span>Protein-side and peptide-side binding-site prediction in one architecture.</span>
+        </div>
+
+        <div class="feature-card">
+          <strong>Interaction-aware transfer</strong>
+          <span>Pretraining transfers protein–peptide recognition knowledge to low-resource benchmarks.</span>
+        </div>
+
+        <div class="feature-card">
+          <strong>Biological interpretability</strong>
+          <span>Cross-attention maps reveal residue coupling, motifs, and interface hotspots.</span>
         </div>
       </div>
-      <div class="media-card glow">
-        <img src="https://github.com/SyedKumailHussainNaqvi/ProPepX" alt="Animated ProPepX workflow" />
-        <p>Animated overview of the ProPepX prediction workflow.</p>
-      </div>
-    </section>
+    </div>
 
-    <section id="architecture" class="section">
-      <span class="section-tag">Architecture</span>
-      <h2>Model design</h2>
-      <p class="section-lead">ProPepX integrates pretrained PLM embeddings, multi-scale contextual encoding, bidirectional cross-attention, and adaptive gated fusion for biologically interpretable protein–peptide binding-site prediction.</p>
-      <div class="pipeline">
-        <div><span>01</span><h3>Input sequences</h3><p>Protein and peptide amino-acid sequences are encoded using pretrained protein language models.</p></div>
-        <div><span>02</span><h3>Context encoders</h3><p>Multi-scale CNN and Transformer modules capture local motifs and long-range sequence dependencies.</p></div>
-        <div><span>03</span><h3>Bidirectional attention</h3><p>Protein-to-peptide and peptide-to-protein cross-attention exchange partner-specific interaction signals.</p></div>
-        <div><span>04</span><h3>Gated fusion</h3><p>Intrinsic sequence features are adaptively fused with partner-aware cross-interface features.</p></div>
-        <div><span>05</span><h3>Residue prediction</h3><p>The model outputs binding probabilities for each residue on both protein and peptide chains.</p></div>
-      </div>
-    </section>
+    <div class="media-card glow">
+      <img src="ProPepX.gif" alt="Animated ProPepX workflow" />
+      <p>Animated overview of the ProPepX prediction workflow.</p>
+    </div>
+  </section>
 
-    <section id="results" class="section dark">
-      <span class="section-tag">Benchmark results</span>
-      <h2>Strong performance across transfer-learning, joint-learning, and zero-shot tasks</h2>
-      <div class="metrics-grid">
-        <div class="metric-card"><span>0.677</span><p>Protein-side MCC on TS251</p></div>
-        <div class="metric-card"><span>0.925</span><p>Protein-side AUROC on TS125</p></div>
-        <div class="metric-card"><span>0.633</span><p>Peptide-side average MCC on TS231</p></div>
-        <div class="metric-card"><span>0.807</span><p>Peptide-side average AUROC on TS231</p></div>
-        <div class="metric-card"><span>0.964</span><p>Protein AUROC on Test251–LEADS</p></div>
-        <div class="metric-card"><span>0.947</span><p>Zero-shot protein AUROC on TS167</p></div>
-      </div>
-    </section>
+  <!-- Method -->
+  <section id="method" class="section">
+    <span class="section-tag">Method</span>
 
-    <section id="interpretability" class="section split reverse">
-      <div class="visual-panel">
-        <div class="attention-map"></div>
-        <p>Conceptual bidirectional cross-attention map</p>
-      </div>
-      <div>
-        <span class="section-tag">Interpretability</span>
-        <h2>From predictions to mechanistic interface evidence</h2>
-        <p>ProPepX provides cross-interface attention maps, attribution profiles, perturbation analysis, and residue-coupling landscapes. These outputs help identify recognition hotspots and explain how peptide residues support protein-interface predictions and how protein residues support peptide-interface predictions.</p>
-        <ul class="checklist">
-          <li>Cross-interface residue-coupling maps</li>
-          <li>Protein and peptide binding-site probability tracks</li>
-          <li>Attribution-guided hotspot prioritization</li>
-          <li>Perturbation-based validation of residue importance</li>
-        </ul>
-      </div>
-    </section>
+    <h2>Bidirectional interaction-aware transfer learning</h2>
 
-    <section id="validation" class="section cards-section">
-      <span class="section-tag">Structural validation</span>
-      <h2>Docking and molecular dynamics support biological relevance</h2>
-      <div class="card-row">
-        <article><h3>Docking-guided validation</h3><p>Predicted interaction hotspots can be used as restraints for information-driven protein–peptide docking, recovering coherent interface geometries.</p></article>
-        <article><h3>100 ns molecular dynamics</h3><p>High-confidence complexes maintain more stable trajectories with reduced fluctuations and stronger interface stabilization.</p></article>
-        <article><h3>Energetic ranking</h3><p>Model confidence aligns with docking score trends, supporting the physical plausibility of predicted interfaces.</p></article>
-      </div>
-    </section>
+    <p>
+      ProPepX integrates pretrained protein language model embeddings,
+      multi-scale convolutional feature extraction, transformer-based contextual
+      encoding, bidirectional cross-attention, and gated fusion to predict
+      binding residues on both proteins and peptides.
+    </p>
 
-    <section id="downloads" class="section resources">
-      <span class="section-tag">Resources</span>
-      <h2>Code, weights, datasets, and documentation</h2>
-      <div class="resource-grid">
-        <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank"><strong>GitHub repository</strong><span>Source code, examples, and project files</span></a>
-        <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX/blob/main/ProPepX.gif" target="_blank"><strong>ProPepX animation</strong><span>Workflow GIF used on this webpage</span></a>
-        <a href="#" target="_blank"><strong>Hugging Face weights</strong><span>Replace this link with your model-weight repository</span></a>
-        <a href="#citation"><strong>Citation</strong><span>BibTeX and manuscript information</span></a>
-      </div>
-    </section>
+    <div class="pipeline">
+      <div>Protein sequence</div>
+      <div>Peptide sequence</div>
+      <div>PLM embeddings</div>
+      <div>Multi-scale CNN</div>
+      <div>Transformer encoder</div>
+      <div>Bidirectional cross-attention</div>
+      <div>Gated fusion</div>
+      <div>Residue-level binding prediction</div>
+    </div>
+  </section>
 
-    <section id="citation" class="section citation-section">
-      <span class="section-tag">Citation</span>
-      <h2>Cite ProPepX</h2>
-      <pre><code>@article{propepx2026,
-  title  = {ProPepX: A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein--peptide binding-site prediction},
-  author = {Naqvi, Syed Kumail Hussain and Sourav, Chandra and Chong, Kil To and Tayara, Hilal},
-  year   = {2026},
-  note   = {Manuscript under consideration}
-}</code></pre>
-    </section>
-  </main>
+  <!-- Results -->
+  <section id="results" class="section light">
+    <span class="section-tag">Benchmark Results</span>
+
+    <h2>Strong generalization across protein-side, peptide-side, joint, and zero-shot benchmarks</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>0.919</h3>
+        <p>AUROC on TS92 protein-side benchmark</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>0.633</h3>
+        <p>Average MCC on TS231 peptide-side benchmark</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>0.964</h3>
+        <p>AUROC on Test251–LEADS protein-side joint prediction</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>0.947</h3>
+        <p>AUROC in zero-shot protein-side prediction</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interpretability -->
+  <section id="interpretability" class="section">
+    <span class="section-tag">Interpretability</span>
+
+    <h2>Cross-attention maps reveal biologically meaningful interaction hotspots</h2>
+
+    <p>
+      ProPepX provides interpretable bidirectional cross-attention maps that
+      expose protein–peptide residue coupling patterns. These maps help identify
+      recognition motifs, interface hotspots, and partner-specific residue
+      contributions underlying binding-site predictions.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <strong>Residue coupling</strong>
+        <span>Identifies which peptide residues attend to protein interface regions.</span>
+      </div>
+
+      <div class="feature-card">
+        <strong>Attribution validation</strong>
+        <span>Deletion of high-attribution residues reduces predicted binding confidence.</span>
+      </div>
+
+      <div class="feature-card">
+        <strong>Structural support</strong>
+        <span>Predicted hotspots align with structurally meaningful protein–peptide contacts.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Downloads -->
+  <section id="downloads" class="section light">
+    <span class="section-tag">Resources</span>
+
+    <h2>Code, model weights, and manuscript resources</h2>
+
+    <div class="resource-grid">
+      <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank">
+        GitHub Repository
+      </a>
+
+      <a href="#" target="_blank">
+        Hugging Face Model Weights
+      </a>
+
+      <a href="#" target="_blank">
+        Manuscript
+      </a>
+
+      <a href="#" target="_blank">
+        Supplementary Information
+      </a>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section id="citation" class="section">
+    <span class="section-tag">Citation</span>
+
+    <h2>Cite ProPepX</h2>
+
+    <pre>
+@article{naqvi2026propepx,
+  title={ProPepX: A Unified Framework for Interpretable Bidirectional Interaction-Aware Transfer Learning in Joint Residue-Level Protein--Peptide Binding-Site Prediction},
+  author={Naqvi, Syed Kumail Hussain and Sourav, Chandra and Chong, Kil To and Tayara, Hilal},
+  journal={Manuscript under review},
+  year={2026}
+}
+    </pre>
+  </section>
 
   <footer>
-    <strong>ProPepX</strong>
-    <p>Interpretable bidirectional interaction-aware transfer learning for protein–peptide molecular recognition.</p>
+    <p>
+      © 2026 ProPepX · Jeonbuk National University · Designed for research dissemination
+    </p>
   </footer>
 
   <script src="script.js"></script>
+
 </body>
 </html>
