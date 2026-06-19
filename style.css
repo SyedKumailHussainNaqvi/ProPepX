@@ -99,3 +99,12 @@ footer strong { font-size: 1.4rem; color: var(--blue); }
   .menu-toggle { display: block; }
   .split, .reverse, .feature-grid, .pipeline, .metrics-grid, .card-row, .resource-grid { grid-template-columns: 1fr; }
 }
+.media-card video,
+.hero-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  object-fit: cover;
+  background: var(--soft);
+}
