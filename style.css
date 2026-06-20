@@ -599,3 +599,37 @@ footer strong {
     height: auto;
   }
 }
+.interpretability-full {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(8, 209, 197, 0.10), transparent 28%),
+    radial-gradient(circle at 92% 8%, rgba(123, 63, 242, 0.10), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+}
+
+.full-figure {
+  margin-top: 40px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+}
+
+.full-figure img {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+}
+
+.figure-subtitle {
+  max-width: 1100px;
+  margin: 22px auto 0;
+  text-align: center;
+  font-size: 1.05rem;
+  color: #475569;
+}
+
+.mechanistic-grid {
+  margin-top: 34px;
+}
