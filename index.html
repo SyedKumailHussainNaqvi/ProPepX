@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ProPepX is an interpretable bidirectional interaction-aware transfer learning framework for joint residue-level protein–peptide binding-site prediction." />
+  <meta name="theme-color" content="#061735" />
+  <title>ProPepX | Interpretable Protein–Peptide Interface Prediction</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Primary navigation">
+    <a class="brand" href="#home" aria-label="ProPepX home">
+      <span class="brand-mark">P</span>
+      <span>ProPepX</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      <a href="#rationale">Rationale</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#results">Results</a>
+      <a href="#interpretability">Interpretability</a>
+      <a href="#resources">Resources</a>
+    </div>
+  </nav>
+
+  <header id="home" class="hero section-dark">
+    <div class="hero-orb orb-a"></div>
+    <div class="hero-orb orb-b"></div>
+    <div class="molecular-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Nature Machine Intelligence submission · Interaction-aware AI</p>
+        <h1>Learning protein–peptide interfaces as reciprocal recognition events</h1>
+        <p class="hero-lead">
+          ProPepX jointly predicts peptide-binding residues on proteins and protein-binding residues on peptides using bidirectional cross-interface attention, gated fusion, and supervised transfer learning.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank" rel="noopener">View GitHub</a>
+          <button class="btn btn-secondary" data-open-video>Watch animation</button>
+          <a class="btn btn-ghost" href="#resources">Resources</a>
+        </div>
+        <div class="hero-meta" aria-label="Key features">
+          <span>Joint residue-level prediction</span>
+          <span>Bidirectional interpretability</span>
+          <span>Zero-shot generalization</span>
+        </div>
+      </div>
+
+      <div class="cinema-card reveal delay-1">
+        <div class="video-frame">
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="Conceptual_IAT_ProPepX.png">
+            <source src="ProPepX.mp4" type="video/mp4" />
+            Your browser does not support HTML5 video.
+          </video>
+          <button class="play-chip" data-open-video aria-label="Open scientific animation">
+            <span>▶</span> Scientific animation
+          </button>
+        </div>
+        <div class="video-caption">
+          <strong>Animated overview:</strong> sequence embeddings, reciprocal attention, gated fusion, and residue-level binding-site inference.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="rationale" class="section section-light">
+      <div class="section-head reveal">
+        <p class="eyebrow">Scientific rationale</p>
+        <h2>Interface residues are not independent sequence labels.</h2>
+        <p>
+          A residue becomes functionally relevant through the molecular context of its interacting partner. ProPepX therefore conditions protein and peptide residue representations on each other, enabling partner-aware binding-site prediction.
+        </p>
+      </div>
+
+      <div class="insight-grid reveal delay-1">
+        <article class="glass-card">
+          <span class="card-index">01</span>
+          <h3>Unified prediction</h3>
+          <p>Protein-side and peptide-side residue predictions are learned within one shared architecture.</p>
+        </article>
+        <article class="glass-card">
+          <span class="card-index">02</span>
+          <h3>Partner-conditioned features</h3>
+          <p>Cross-attention converts single-sequence embeddings into interaction-aware residue representations.</p>
+        </article>
+        <article class="glass-card">
+          <span class="card-index">03</span>
+          <h3>Transferable recognition</h3>
+          <p>Large-scale pretraining transfers general molecular recognition knowledge to low-resource tasks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="section figure-section">
+      <div class="section-head narrow reveal">
+        <p class="eyebrow">Transfer-learning workflow</p>
+        <h2>From generic binding data to task-specific interface prediction</h2>
+        <p>Stage 1 learns broad protein–peptide recognition patterns. Stage 2 adapts the pretrained model to protein-side or peptide-side residue-level tasks.</p>
+      </div>
+      <figure class="publication-figure reveal delay-1">
+        <button class="figure-zoom" data-lightbox="Conceptual_IAT_ProPepX.png" aria-label="Open workflow figure">
+          <img src="Conceptual_IAT_ProPepX.png" alt="ProPepX supervised transfer learning workflow" loading="lazy" />
+        </button>
+        <figcaption><strong>Training objective.</strong> Large-scale supervised interaction-aware pretraining followed by task-specific fine-tuning for low-resource residue-level binding-site prediction.</figcaption>
+      </figure>
+    </section>
+
+    <section id="architecture" class="section architecture-section section-soft">
+      <div class="section-head reveal">
+        <p class="eyebrow">Architecture</p>
+        <h2>Partner-aware model design</h2>
+        <p>ProPepX integrates PLM embeddings, multi-scale contextual encoding, bidirectional cross-attention, gated fusion, and residue-level classification.</p>
+      </div>
+      <div class="process-line reveal delay-1">
+        <article><span>01</span><h3>PLM embeddings</h3><p>Protein and peptide sequences are projected into contextual residue representations.</p></article>
+        <article><span>02</span><h3>Intra-molecular encoding</h3><p>Local motifs and long-range dependencies are captured before partner exchange.</p></article>
+        <article><span>03</span><h3>Cross-interface attention</h3><p>Protein↔peptide attention learns residue–residue coupling across the interface.</p></article>
+        <article><span>04</span><h3>Gated fusion</h3><p>Self features and partner-aware cross features are adaptively integrated.</p></article>
+        <article><span>05</span><h3>Residue classifier</h3><p>Binding probabilities are produced for each protein and peptide residue.</p></article>
+      </div>
+    </section>
+
+    <section class="section video-showcase section-dark">
+      <div class="showcase-grid">
+        <div class="reveal">
+          <p class="eyebrow">HTML5 video showcase</p>
+          <h2>From sequences to mechanistic interpretation</h2>
+          <p>
+            The animation can be used as a high-impact visual entry point for readers, reviewers, and editors. It explains the full ProPepX pipeline before the manuscript figures are introduced.
+          </p>
+          <ul class="check-list">
+            <li>Protein and peptide sequence input</li>
+            <li>Bidirectional cross-interface attention</li>
+            <li>Gated partner-aware residue fusion</li>
+            <li>Binding-site probability and attribution evidence</li>
+          </ul>
+        </div>
+        <div class="cinema-card compact reveal delay-1">
+          <div class="video-frame">
+            <video autoplay muted loop playsinline controls preload="metadata">
+              <source src="ProPepX.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section results-section">
+      <div class="section-head reveal">
+        <p class="eyebrow">Benchmark evidence</p>
+        <h2>Consistent gains across transfer, joint-learning, and zero-shot settings</h2>
+        <p>Animated counters highlight key reported performance values for the ProPepX framework.</p>
+      </div>
+      <div class="metrics-grid reveal delay-1">
+        <article class="metric-card"><span class="counter" data-target="0.677">0.000</span><p>Protein-side MCC on TS251</p></article>
+        <article class="metric-card"><span class="counter" data-target="0.925">0.000</span><p>Protein-side AUROC on TS125</p></article>
+        <article class="metric-card"><span class="counter" data-target="0.633">0.000</span><p>Peptide-side average MCC on TS231</p></article>
+        <article class="metric-card"><span class="counter" data-target="0.807">0.000</span><p>Peptide-side average AUROC on TS231</p></article>
+        <article class="metric-card"><span class="counter" data-target="0.964">0.000</span><p>Protein AUROC on Test251–LEADS</p></article>
+        <article class="metric-card"><span class="counter" data-target="0.947">0.000</span><p>Zero-shot protein AUROC on TS167</p></article>
+      </div>
+    </section>
+
+    <section id="interpretability" class="section figure-section section-soft">
+      <div class="section-head reveal">
+        <p class="eyebrow">Interpretability</p>
+        <h2>From prediction scores to mechanistic residue evidence</h2>
+        <p>Cross-interface attention, attribution profiles, and perturbation curves reveal how partner residues support each binding-site decision.</p>
+      </div>
+      <figure class="publication-figure wide reveal delay-1">
+        <button class="figure-zoom" data-lightbox="CA_AB.png" aria-label="Open interpretability figure">
+          <img src="CA_AB.png" alt="Bidirectional gated-weighted cross-interface attention map and attribution perturbation analysis" loading="lazy" />
+        </button>
+        <figcaption><strong>Mechanistic interpretation.</strong> Bidirectional gated-weighted attention maps identify residue–residue coupling and attribution-supported recognition motifs across protein and peptide interfaces.</figcaption>
+      </figure>
+      <div class="interpretation-points reveal delay-2">
+        <span>Residue–residue coupling maps</span>
+        <span>Top gated attention hotspots</span>
+        <span>Attribution-guided residues</span>
+        <span>Perturbation validation</span>
+      </div>
+    </section>
+
+    <section class="section impact-section">
+      <div class="impact-card reveal">
+        <p class="eyebrow">Why it matters</p>
+        <h2>ProPepX turns interface prediction into interpretable molecular reasoning.</h2>
+        <p>
+          By explicitly modeling reciprocal communication between proteins and peptides, ProPepX supports data-efficient peptide engineering, interaction discovery, and therapeutic design workflows.
+        </p>
+      </div>
+    </section>
+
+    <section id="resources" class="section resources-section section-dark">
+      <div class="section-head reveal">
+        <p class="eyebrow">Resources</p>
+        <h2>Code, weights, figures, and citation</h2>
+      </div>
+      <div class="resource-grid reveal delay-1">
+        <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX" target="_blank" rel="noopener"><strong>GitHub repository</strong><span>Source code and project files</span></a>
+        <a href="ProPepX.mp4" target="_blank"><strong>Scientific animation</strong><span>MP4 video for website and presentation use</span></a>
+        <a href="Conceptual_IAT_ProPepX.png" target="_blank"><strong>Transfer learning figure</strong><span>Workflow and training objective</span></a>
+        <a href="CA_AB.png" target="_blank"><strong>Interpretability figure</strong><span>Attention, attribution, and perturbation evidence</span></a>
+      </div>
+      <div class="citation-box reveal delay-2">
+        <code>ProPepX: A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein–peptide binding-site prediction.</code>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="ProPepX animation">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close-modal aria-label="Close video">×</button>
+      <video id="modalVideo" controls playsinline preload="metadata">
+        <source src="ProPepX.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Expanded figure">
+    <div class="modal-backdrop" data-close-lightbox></div>
+    <div class="lightbox-panel">
+      <button class="modal-close" data-close-lightbox aria-label="Close figure">×</button>
+      <img id="lightboxImage" src="" alt="Expanded publication figure" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
