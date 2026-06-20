@@ -547,3 +547,44 @@ footer strong {
     font-size: clamp(1.7rem, 8vw, 3rem);
   }
 }
+.real-attention {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.attention-figure {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  transition: 0.4s ease;
+}
+
+.attention-figure:hover {
+  transform: scale(1.01);
+}
+
+.figure-caption {
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--soft);
+  border-radius: 14px;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.figure-caption strong {
+  color: var(--navy);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.mechanistic-insight {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(8, 209, 197, 0.12), transparent 28%),
+    radial-gradient(circle at 90% 10%, rgba(123, 63, 242, 0.10), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+}
