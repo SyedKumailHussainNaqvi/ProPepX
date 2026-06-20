@@ -21,6 +21,7 @@
     <div class="nav-links">
       <a href="#overview">Overview</a>
       <a href="#architecture">Architecture</a>
+      <a href="#proposed-model">Proposed Model</a>
       <a href="#results">Results</a>
       <a href="#interpretability">Interpretability</a>
       <a href="#validation">Validation</a>
@@ -35,7 +36,12 @@
     <div class="hero-content">
       <p class="eyebrow">Nature Machine Intelligence Submission · Protein–Peptide Recognition</p>
 
-      <h2><span class="title-brand">ProPepX:</span> <span class="title-main"> A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein–peptide binding-site prediction </span> </h2>
+      <h1 class="hero-title">
+        <span class="title-brand">ProPepX</span>
+        <span class="title-main">
+          A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein–peptide binding-site prediction
+        </span>
+      </h1>
 
       <p class="subtitle">
         Joint residue-level prediction of peptide-binding residues on proteins and protein-binding residues on peptides through partner-conditioned molecular reasoning.
@@ -65,9 +71,9 @@
         <h2>Reciprocal protein–peptide reasoning for residue-level interface discovery</h2>
 
         <p>
-          ProPepX explicitly models the reciprocal recognition process between interacting protein and peptide partners.
-          Instead of treating interface prediction as two independent tasks, the framework uses bidirectional cross-attention
-          and gated fusion to learn partner-aware residue representations for both molecular partners.
+          ProPepX explicitly models reciprocal recognition between interacting protein and peptide partners.
+          Instead of treating interface prediction as two independent tasks, the framework uses bidirectional
+          cross-attention and gated fusion to learn partner-aware residue representations for both molecular partners.
         </p>
 
         <div class="feature-grid compact">
@@ -89,19 +95,7 @@
       </div>
 
       <div class="media-card glow">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          controls
-          preload="auto"
-          poster="./sample.png">
-          <source src="./ProPepX.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-
+        <img src="./ProPepX.gif" alt="Animated ProPepX workflow">
         <p>Animated overview of the ProPepX prediction workflow.</p>
       </div>
     </section>
@@ -146,6 +140,26 @@
           <h3>Residue prediction</h3>
           <p>The model outputs binding probabilities for each residue on both protein and peptide chains.</p>
         </div>
+      </div>
+    </section>
+
+    <section id="proposed-model" class="section proposed-model">
+      <span class="section-tag">Proposed model</span>
+
+      <h2>Interaction-aware transfer learning strategy</h2>
+
+      <p class="section-lead">
+        ProPepX learns generalizable protein–peptide recognition patterns through supervised pretraining on
+        large-scale binding data and transfers this knowledge to task-specific residue-level prediction benchmarks.
+      </p>
+
+      <div class="figure-card">
+        <img src="./Conceptual_IAT_ProPepX.png" alt="Conceptual interaction-aware transfer learning strategy of ProPepX">
+        <p>
+          Conceptual interaction-aware transfer learning workflow for ProPepX. Stage 1 learns transferable binding
+          representations from large-scale generic data, while Stage 2 fine-tunes the pretrained model on task-specific
+          protein or peptide binding-site datasets.
+        </p>
       </div>
     </section>
 
@@ -224,9 +238,9 @@
           <span>Source code, examples, and project files</span>
         </a>
 
-        <a href="./ProPepX.mp4" target="_blank">
+        <a href="./ProPepX.gif" target="_blank">
           <strong>ProPepX animation</strong>
-          <span>Workflow MP4 used on this webpage</span>
+          <span>Animated workflow used on this webpage</span>
         </a>
 
         <a href="#" target="_blank">
