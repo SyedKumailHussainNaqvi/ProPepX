@@ -1367,84 +1367,102 @@ body.lightbox-open{
 /* ==========================================
    Restore Nature-style Blue Benchmark Scores
    ========================================== */
-
 /* =====================================================
-   FINAL OVERRIDE — NATURE-STYLE WHITE BENCHMARK PANELS
+   FIX ONLY PROTEIN-SIDE IATL POPUP TABLE OVERLAP
+   Keeps previous popup layout/style
    ===================================================== */
 
-/* =====================================================
-   FIX BENCHMARK HOVER PANEL FULL DISPLAY
-   ===================================================== */
-
-/* Keep the task row and results section from clipping popup */
-.results-section,
-.results-section .container,
-.benchmark-tab-system,
-.benchmark-tab{
+/* Keep original protein-side panel position */
+.protein-tab .benchmark-panel{
+  left: 0 !important;
+  width: calc(400% + 54px) !important;
+  max-width: none !important;
   overflow: visible !important;
 }
 
-/* Make popup panel fit inside the viewport/container */
-.benchmark-panel{
-  left: 50% !important;
-  right: auto !important;
-  width: min(1320px, calc(100vw - 80px)) !important;
-  max-width: calc(100vw - 80px) !important;
-  transform: translateX(-50%) translateY(18px) scale(.985) !important;
+/* Give four protein benchmark cards enough internal space */
+.protein-tab .panel-grid.four{
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
 }
 
-/* Show smoothly on hover */
-.benchmark-tab:hover .benchmark-panel,
-.benchmark-tab:focus .benchmark-panel,
-.benchmark-tab:focus-within .benchmark-panel{
-  transform: translateX(-50%) translateY(0) scale(1) !important;
+/* Prevent table cards from visually bleeding into each other */
+.protein-tab .mini-table-card{
+  min-width: 0 !important;
+  overflow: hidden !important;
+  padding: 16px !important;
 }
 
-/* Remove old per-tab left shifts */
-.peptide-tab .benchmark-panel,
-.joint-tab .benchmark-panel,
-.zeroshot-tab .benchmark-panel{
-  left: 50% !important;
-}
-
-/* Hide old arrow positions to avoid misalignment */
-.benchmark-panel::before{
-  display: none !important;
-}
-
-/* Make protein-side four tables fit properly */
-.panel-grid.four{
-  grid-template-columns: repeat(4, minmax(260px, 1fr)) !important;
-}
-
-/* Prevent table content from being cut */
-.mini-table-card{
-  overflow-x: auto !important;
-}
-
-.mini-table-card table{
+/* Make tables fit inside each card instead of overflowing */
+.protein-tab .mini-table-card table{
   width: 100% !important;
-  min-width: 520px !important;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
 }
 
-/* Better responsive behavior */
-@media (max-width: 1280px){
-  .panel-grid.four{
-    grid-template-columns: repeat(2, minmax(280px, 1fr)) !important;
+/* Compact protein-side table cells */
+.protein-tab .mini-table-card th,
+.protein-tab .mini-table-card td{
+  padding: 9px 6px !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.15 !important;
+}
+
+/* Smaller headers so all columns fit */
+.protein-tab .mini-table-card th{
+  font-size: 0.58rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* Keep metric labels readable */
+.protein-tab .mini-table-card td:first-child{
+  width: 44px !important;
+  font-size: 0.78rem !important;
+}
+
+/* Compact model names */
+.protein-tab .mini-table-card b{
+  font-size: 0.56rem !important;
+  line-height: 1.05 !important;
+}
+
+/* Compact values but still bold and clear */
+.protein-tab .mini-table-card strong{
+  font-size: 1.05rem !important;
+  line-height: 1.05 !important;
+}
+
+/* Keep proposed/best columns clean */
+.protein-tab .mini-table-card td.proposed,
+.protein-tab .mini-table-card td.best{
+  overflow: hidden !important;
+}
+
+/* Medium screens: use 2 x 2 layout instead of squeezing */
+@media (max-width: 1240px){
+  .protein-tab .benchmark-panel{
+    width: calc(200% + 18px) !important;
+  }
+
+  .protein-tab .panel-grid.four{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
+/* Mobile: one card per row */
 @media (max-width: 760px){
-  .benchmark-panel{
-    position: static !important;
+  .protein-tab .benchmark-panel{
     width: 100% !important;
-    max-width: 100% !important;
-    transform: none !important;
   }
 
-  .panel-grid.four,
-  .panel-grid.two,
-  .panel-grid.one{
+  .protein-tab .panel-grid.four{
     grid-template-columns: 1fr !important;
   }
 }
+
