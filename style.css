@@ -1036,3 +1036,30 @@ body.lightbox-open{
   .mini-table-card{overflow-x:auto;}
   .mini-table-card table{min-width:720px;}
 }
+/* Nature Machine Intelligence-style overview section */
+.overview-section{
+  background:
+    radial-gradient(circle at 12% 15%, rgba(19,217,210,.06), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(122,92,255,.06), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  color: var(--ink);
+}
+
+.overview-copy .eyebrow{
+  color: var(--blue);
+}
+
+.overview-copy h2{
+  color: var(--navy) !important;
+}
+
+.overview-copy p{
+  color: #52627a !important;
+}
+
+.overview-section .showcase-video{
+  background: #ffffff;
+  border: 1px solid rgba(15,23,42,.08);
+  box-shadow: 0 24px 70px rgba(15,23,42,.10);
+  border-radius: 34px;
+}
