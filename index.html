@@ -13,6 +13,60 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <script>
+(function () {
+    const ACCESS_CODE = "ProPepX2026";
+
+    const pass = prompt("Enter ProPepX Access Code:");
+
+    if (pass !== ACCESS_CODE) {
+        document.documentElement.innerHTML = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Access Restricted</title>
+            <style>
+                body{
+                    margin:0;
+                    height:100vh;
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    background:#f5f7fb;
+                    font-family:Inter,Arial,sans-serif;
+                }
+                .box{
+                    text-align:center;
+                    padding:40px;
+                    background:white;
+                    border-radius:20px;
+                    box-shadow:0 20px 60px rgba(0,0,0,.08);
+                }
+                h1{
+                    color:#0b1f45;
+                    margin-bottom:10px;
+                }
+                p{
+                    color:#64748b;
+                }
+            </style>
+
+```
+    </head>
+    <body>
+        <div class="box">
+            <h1>Access Restricted</h1>
+            <p>This ProPepX website is currently private.</p>
+        </div>
+    </body>
+    </html>
+    `;
+    throw new Error("Access denied");
+}
+```
+
+})(); </script>
+
   <div class="progress-bar" id="progressBar"></div>
 
   <header class="site-header" id="top">
