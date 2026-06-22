@@ -1213,6 +1213,30 @@ body.lightbox-open{
 }
 
 /* Hover button new addition */
+/* ==========================================
+   Restore Nature-style Blue Benchmark Scores
+   ========================================== */
 
+.tab-score,
+.tab-score .counter,
+.counter,
+.big-number,
+.metric-value,
+.task-score{
+    color:#1f6fff !important;
+    font-weight:900 !important;
+    text-shadow:none !important;
+}
+
+/* Optional: brighter Nature-style blue */
+.tab-score .counter{
+    color:#2563ff !important;
+}
+
+/* MCC / AUROC labels */
+.tab-score small{
+    color:#23c7d8 !important;
+    font-weight:800 !important;
+}
 
 
