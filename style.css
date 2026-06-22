@@ -1363,14 +1363,6 @@ body.lightbox-open{
 .results-section .tab-cta::after{
     color:#061a40 !important;
 }
-/* Hover button new addition */
-/* ==========================================
-   Restore Nature-style Blue Benchmark Scores
-   ========================================== */
-/* =====================================================
-   FIX ONLY PROTEIN-SIDE IATL POPUP TABLE OVERLAP
-   Keeps previous popup layout/style
-   ===================================================== */
 
 /* Keep original protein-side panel position */
 .protein-tab .benchmark-panel{
@@ -1465,4 +1457,23 @@ body.lightbox-open{
     grid-template-columns: 1fr !important;
   }
 }
+/* Hover button new addition */
+/* ==========================================
+   Restore Nature-style Blue Benchmark Scores
+   ========================================== */
+/* =====================================================
+   FIX ONLY PROTEIN-SIDE IATL POPUP TABLE OVERLAP
+   Keeps previous popup layout/style
+   ===================================================== */
+.benchmark-note{
+    position: relative !important;
+    z-index: 500 !important;
+    display: block !important;
 
+    color:#52627a !important;
+    opacity:1 !important;
+    visibility:visible !important;
+
+    margin-top:40px !important;
+    padding-bottom:30px !important;
+}
