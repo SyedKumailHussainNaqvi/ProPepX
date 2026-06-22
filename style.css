@@ -1139,3 +1139,102 @@ body.lightbox-open{
 .results-section .benchmark-lead{
   color:#52627d !important;
 }
+/* ==========================================
+   WHITE BENCHMARK SECTION OVERRIDE
+   ========================================== */
+
+.results-section{
+    background:
+        radial-gradient(circle at 12% 20%, rgba(19,217,210,.08), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(122,92,255,.08), transparent 30%),
+        linear-gradient(180deg,#ffffff 0%,#f7faff 100%) !important;
+}
+
+/* Heading */
+.results-section .eyebrow{
+    color:#5f6f89 !important;
+}
+
+.results-section h2{
+    color:#061a40 !important;
+}
+
+.results-section .benchmark-lead{
+    color:#52627a !important;
+}
+
+/* ======================
+   TASK CARDS
+   ====================== */
+
+.benchmark-tab{
+    background:#ffffff !important;
+
+    border:1px solid #dbe4f0 !important;
+
+    box-shadow:
+        0 16px 50px rgba(6,26,64,.08) !important;
+
+    backdrop-filter:none !important;
+}
+
+/* Card title */
+
+.benchmark-tab h3{
+    color:#061a40 !important;
+}
+
+/* Card subtitle */
+
+.benchmark-tab p{
+    color:#64748b !important;
+}
+
+/* TASK badge */
+
+.tab-label{
+    color:#13b6c8 !important;
+
+    background:rgba(19,217,210,.08) !important;
+
+    border:1px solid rgba(19,217,210,.20) !important;
+}
+
+/* Big numbers */
+
+.tab-score span{
+    color:#061a40 !important;
+}
+
+/* MCC / AUROC */
+
+.tab-score small{
+    color:#13b6c8 !important;
+}
+
+/* Hover button */
+
+.tab-cta{
+    background:linear-gradient(
+        135deg,
+        #22d3ee,
+        #60a5fa
+    ) !important;
+
+    color:#061a40 !important;
+
+    font-weight:900 !important;
+
+    border:none !important;
+}
+
+/* Hover state */
+
+.benchmark-tab:hover{
+    transform:translateY(-8px);
+
+    border-color:#60a5fa !important;
+
+    box-shadow:
+        0 25px 70px rgba(6,26,64,.14) !important;
+}
