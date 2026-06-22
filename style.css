@@ -1211,12 +1211,6 @@ body.lightbox-open{
 .tab-score small{
     color:#13b6c8 !important;
 }
-
-/* Hover button new addition */
-/* ==========================================
-   Restore Nature-style Blue Benchmark Scores
-   ========================================== */
-
 .tab-score,
 .tab-score .counter,
 .counter,
@@ -1238,5 +1232,142 @@ body.lightbox-open{
     color:#23c7d8 !important;
     font-weight:800 !important;
 }
+/* Hover button new addition */
+/* ==========================================
+   Restore Nature-style Blue Benchmark Scores
+   ========================================== */
 
+/* =====================================================
+   FINAL OVERRIDE — NATURE-STYLE WHITE BENCHMARK PANELS
+   ===================================================== */
 
+/* Main task cards */
+.benchmark-tab{
+    background:#ffffff !important;
+    border:1px solid #dbe4f0 !important;
+    box-shadow:0 12px 40px rgba(6,26,64,.08) !important;
+}
+
+.benchmark-tab h3{
+    color:#061a40 !important;
+}
+
+.benchmark-tab p{
+    color:#64748b !important;
+}
+
+.tab-score span{
+    color:#1368f5 !important;
+}
+
+.tab-score small{
+    color:#13d9d2 !important;
+}
+
+/* Hover button */
+.tab-cta,
+.tab-cta:link,
+.tab-cta:visited{
+    background:#ffffff !important;
+    color:#061a40 !important;
+    border:1px solid #dbe4f0 !important;
+    box-shadow:0 10px 25px rgba(6,26,64,.08) !important;
+    font-weight:900 !important;
+}
+
+.tab-cta:hover{
+    background:#f8fbff !important;
+    color:#061a40 !important;
+}
+
+/* Task labels */
+.tab-label{
+    background:#eef9ff !important;
+    color:#1368f5 !important;
+    border:1px solid #cfe4ff !important;
+}
+
+/* Benchmark popup */
+.benchmark-panel{
+    background:#ffffff !important;
+    border:1px solid #dbe4f0 !important;
+    box-shadow:0 20px 80px rgba(6,26,64,.12) !important;
+}
+
+.panel-head h4{
+    color:#061a40 !important;
+}
+
+.panel-head span{
+    color:#1368f5 !important;
+}
+
+/* Tables */
+.mini-table-card{
+    background:#ffffff !important;
+    border:1px solid #e2e8f0 !important;
+}
+
+.mini-table-card h5{
+    color:#061a40 !important;
+}
+
+.mini-table-card table{
+    background:#ffffff !important;
+}
+
+.mini-table-card th{
+    background:#f7faff !important;
+    color:#475569 !important;
+}
+
+.mini-table-card td{
+    color:#061a40 !important;
+}
+
+.mini-table-card td:first-child{
+    color:#1368f5 !important;
+}
+
+.mini-table-card b{
+    color:#64748b !important;
+}
+
+.mini-table-card strong{
+    color:#061a40 !important;
+    text-shadow:none !important;
+}
+
+/* Proposed model */
+.mini-table-card td.proposed{
+    background:#eef6ff !important;
+}
+
+.mini-table-card td.proposed strong{
+    color:#1368f5 !important;
+}
+
+/* Best model */
+.mini-table-card td.best{
+    background:#e9fbff !important;
+}
+
+.mini-table-card td.best strong{
+    color:#003fb3 !important;
+}
+
+/* Force ALL text inside benchmark section dark */
+.results-section .benchmark-tab *,
+.results-section .benchmark-panel *,
+.results-section .mini-table-card *{
+    text-shadow:none !important;
+}
+
+/* Most important fix for your screenshot */
+.results-section .tab-cta{
+    color:#061a40 !important;
+}
+
+.results-section .tab-cta::after{
+    color:#061a40 !important;
+}
