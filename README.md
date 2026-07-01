@@ -507,7 +507,8 @@ For questions, issues, and collaboration:
 <td>
 
 **Syed Kumail Hussain Naqvi**  
-Department of Physical-AI Convergence Engineering 
+Department of Physical-AI Convergence Engineering
+
 Jeonbuk National University, Republic of Korea
 
  <a href="mailto:syedkumailhussainnaqvi@jbnu.ac.kr">syedkumailhussainnaqvi@jbnu.ac.kr</a>  
