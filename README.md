@@ -62,47 +62,6 @@ The repository provides:
 
 ---
 
-## Repository structure
-
-```text
-ProPepX/
-├── CoBindingCNN.py
-├── Dataloader.py
-├── Dataset_Preprocessing.py
-├── Import_libraries.py
-├── Test_inference.py
-├── compute_loss.py
-├── compute_loss1.py
-├── finetune_propepx.py
-├── focal_tversky_loss.py
-├── lr_scheduler.py
-├── model_load_weight_utils.py
-├── padding_mask_to_logits.py
-├── pepPI_binding_site_collate.py
-├── pretrain_propepx.py
-├── propepx_config.py
-├── propepx_embedding.py
-├── propepx_inference_utils.py
-├── propepx_interpretability.py
-├── propepx_metrics.py
-├── propepx_predict.py
-├── propepx_structure_viewer.py
-├── propepx_validate.py
-├── propepx_visualizer.py
-├── propepx_visualizer_interpretability.py
-├── run_propepx_example.py
-├── propepx.yml
-├── index.html
-├── script.js
-├── style.css
-├── Conceptual_IAT_ProPepX.png
-├── Benchmark_Fig2.png
-├── CA_AB.png
-└── README.md
-```
-
----
-
 ## Installation
 
 ### Option 1 — Conda installation
@@ -568,35 +527,6 @@ according to the benchmark preprocessing used during training.
 
 ---
 
-## Recommended GitHub presentation for manuscript review
-
-For a Nature-level submission, the repository should include:
-
-```text
-README.md
-LICENSE
-environment.yml or propepx.yml
-requirements.txt
-examples/
-docs/
-figures/
-checkpoints/README.md
-data/README.md
-scripts/
-```
-
-Recommended figure names:
-
-```text
-figures/ProPepX_architecture.png
-figures/ProPepX_workflow.png
-figures/Webserver_demo.png
-figures/Prediction_report_example.png
-figures/Benchmark_summary.png
-```
-
----
-
 ## Roadmap
 
 - [x] Core ProPepX model implementation
@@ -644,10 +574,10 @@ including PyTorch, Hugging Face, ProtTrans, ESM, and associated benchmark datase
 For questions, issues, and collaboration:
 
 ```text
-Syed Kumail Hussain
+Syed Kumail Hussain Naqvi 
 Jeonbuk National University
-GitHub: https://github.com/<YOUR-USERNAME>/ProPepX
-Hugging Face: https://huggingface.co/syedkumailhussain/ProPepX
+GitHub: [https://github.com/<YOUR-USERNAME>/ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX)
+Hugging Face: [https://huggingface.co/syedkumailhussain/ProPepX](https://huggingface.co/syedkumailhussain/ProPepX/tree/main)
 ```
 
 Please open a GitHub issue for reproducibility questions, installation problems,
