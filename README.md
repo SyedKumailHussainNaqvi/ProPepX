@@ -1,11 +1,11 @@
 # ProPepX
 
 <p align="center">
-  <img src="Conceptual_IAT_ProPepX.png" alt="ProPepX conceptual workflow" width="850">
+  <img src="ProPepX.tif" alt="ProPepX conceptual workflow" width="850">
 </p>
 
 <p align="center">
-  <b>Interaction-aware transfer learning for protein–peptide binding residue prediction</b>
+  <b>A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein–peptide binding-site prediction</b>
 </p>
 
 <p align="center">
