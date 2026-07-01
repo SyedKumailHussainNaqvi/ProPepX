@@ -89,7 +89,7 @@ This repository contains the official implementation of ProPepX, including the s
 ### Option 1 — Conda installation
 
 ```bash
-git clone [https://github.com/<YOUR-USERNAME>/ProPepX.git](https://github.com/SyedKumailHussainNaqvi/ProPepX.git)
+git clone https://github.com/SyedKumailHussainNaqvi/ProPepX.git
 cd ProPepX
 
 conda env create -f propepx.yml
