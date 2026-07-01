@@ -1,0 +1,67 @@
+name: propepx
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+  - pandas=2.3.3
+  - pyyaml=6.0.3
+  - requests=2.32.5
+  - tqdm=4.67.1
+  - datasets=4.0.0
+  - wheel=0.45.1
+  - setuptools=80.9.0
+  - ipykernel
+  - jupyterlab
+  - notebook
+  - jupyter_client
+  - jupyter_core
+  - ipython
+
+  - pip:
+      # PyTorch CUDA 12.4 wheels are not on normal PyPI.
+      # This line fixes: "No matching distribution found for torch==2.6.0+cu124"
+      - --extra-index-url https://download.pytorch.org/whl/cu124
+
+      # Deep learning / CUDA
+      - torch==2.6.0+cu124
+      - torchvision==0.21.0+cu124
+      - torchaudio==2.6.0+cu124
+
+      # ESM3 / ESMC package
+      - esm==3.2.1.post1
+
+      # ProPepX core
+      - transformers==4.48.1
+      - accelerate==1.13.0
+      - peft==0.17.1
+      - captum==0.9.0
+      - sentencepiece==0.2.1
+      - huggingface-hub==0.36.0
+      - safetensors==0.6.2
+      - tokenizers==0.21.4
+
+      # Scientific Python
+      - numpy==2.3.3
+      - scipy==1.16.3
+      - scikit-learn==1.7.2
+      - h5py==3.15.1
+      - matplotlib==3.10.7
+      - seaborn==0.13.2
+      - pillow==11.3.0
+      - imageio==2.37.3
+      - imageio-ffmpeg==0.6.0
+      - networkx==3.5
+      - sympy==1.13.1
+      - regex==2025.10.23
+      - joblib==1.5.2
+      - threadpoolctl==3.6.0
+      - fsspec==2025.10.0
+
+      # Recommended for ProPepX public release
+      - biopython
+      - rich
+      - build
+      - twine
