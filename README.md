@@ -1,109 +1,159 @@
-# [ProPepX](https://syedkumailhussainnaqvi.github.io/ProPepX/)
+# ProPepX
 
 <p align="center">
-  <img src="ProPepX.png" alt="ProPepX conceptual workflow" width="850">
+  <a href="https://syedkumailhussainnaqvi.github.io/ProPepX/">
+    <img src="ProPepX.png" alt="ProPepX architecture and workflow" width="900">
+  </a>
 </p>
 
 <p align="center">
-  <b>A unified framework for interpretable bidirectional interaction-aware transfer learning in joint residue-level protein–peptide binding-site prediction</b>
+  <b>A unified, interpretable, bidirectional interaction-aware transfer-learning framework for residue-level protein–peptide binding-site prediction</b>
 </p>
 
 <p align="center">
-  <a href="#quick-start">Quick start</a> •
-  <a href="#web-server">Web server</a> •
-  <a href="#models-and-datasets">Models</a> •
-  <a href="#training-and-reproducibility">Reproducibility</a> •
-  <a href="#citation">Citation</a>
+  <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX"><b>GitHub</b></a> ·
+  <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main"><b>Hugging Face</b></a> ·
+  <a href="https://syedkumailhussainnaqvi.github.io/ProPepX/"><b>Web page</b></a> ·
+  <a href="docs/installation.md"><b>Installation</b></a> ·
+  <a href="docs/inference.md"><b>Inference</b></a> ·
+  <a href="docs/reproducibility.md"><b>Reproducibility</b></a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.11-blue" alt="Python">
-  <img src="https://img.shields.io/badge/PyTorch-2.6.0-red" alt="PyTorch">
-  <img src="https://img.shields.io/badge/CUDA-12.4-green" alt="CUDA">
-  <img src="https://img.shields.io/badge/HuggingFace-Models-yellow" alt="HuggingFace">
-  <img src="https://img.shields.io/badge/WebServer-FastAPI%2FHTML-purple" alt="WebServer">
-  <img src="https://img.shields.io/badge/Status-Manuscript%20Submission-lightgrey" alt="Status">
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white" alt="Python"></a>
+  <a href="https://pytorch.org/"><img src="https://img.shields.io/badge/PyTorch-2.6.0-EE4C2C?logo=pytorch&logoColor=white" alt="PyTorch"></a>
+  <img src="https://img.shields.io/badge/CUDA-12.4-76B900?logo=nvidia&logoColor=white" alt="CUDA">
+  <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main"><img src="https://img.shields.io/badge/Hugging%20Face-Models-FFD21E?logo=huggingface&logoColor=black" alt="Hugging Face"></a>
+  <img src="https://img.shields.io/badge/Web%20Server-FastAPI%20%7C%20HTML-7B3FF2" alt="Web Server">
+  <img src="https://img.shields.io/badge/Status-Manuscript%20under%20review-lightgrey" alt="Status">
 </p>
 
 ---
 
 ## Overview
 
-**ProPepX** is a deep learning framework for predicting binding residues in
-protein–peptide interactions. Unlike sequence-only predictors that treat the
-protein and peptide independently, ProPepX is designed around **interaction-aware
-transfer learning**, allowing protein and peptide representations to be evaluated
-in a shared binding context.
+**ProPepX** predicts binding residues in protein–peptide interactions from protein and peptide sequences. It combines protein-language-model embeddings with intra-molecular encoders, bidirectional protein↔peptide co-attention, gated fusion, and residue-level output heads. Unlike sequence-only predictors that process binding partners independently, ProPepX evaluates protein and peptide representations in a shared interaction-aware context.
 
-The repository provides:
-
-- command-line inference for protein-side, peptide-side, joint, and zero-shot prediction;
-- pretrained and fine-tuned checkpoints hosted on Hugging Face;
-- reproducible pretraining and fine-tuning scripts;
-- an interactive HTML/web-server interface;
-- publication-ready prediction reports, residue-level scores, and visual outputs.
-
-> This repository contains the official implementation of ProPepX, including the source code, pretrained models, web server, and reproducibility resources accompanying a manuscript currently under review.
+The repository provides command-line inference, a browser-based interface, pretrained and fine-tuned checkpoints, test embeddings, training scripts, and reproducibility instructions for manuscript review.
 
 ---
 
-## Highlights
+## Why ProPepX?
 
-| Capability | Description |
+| Limitation in many existing tools | ProPepX design |
 |---|---|
-| Protein-side prediction | Predicts peptide-binding residues on the protein chain |
-| Peptide-side prediction | Predicts protein-binding residues on the peptide chain |
-| Joint prediction | Predicts binding residues for both partners in a unified setting |
-| Zero-shot prediction | Runs transfer-learning inference without task-specific fine-tuning |
-| Embedding backbones | Supports ProtTransT5 and ESM-3 embeddings |
-| Interpretability | Produces residue-level confidence, attention-style maps, and HTML reports |
-| Web server | Provides a browser-based interface for non-programming users |
-| Reproducibility | Includes training, fine-tuning, inference, and validation commands |
+| Protein and peptide are encoded independently | Bidirectional protein↔peptide co-attention |
+| Single-partner prediction | Protein-side, peptide-side, joint, and zero-shot modes |
+| Limited interpretability | Residue probabilities, interaction maps, and HTML reports |
+| Hard-to-reproduce pipelines | Conda environment, documented checkpoints, and scripted inference |
+| No easy interface for non-programmers | Integrated web server and static GitHub Pages demo |
+
+---
+
+## At a glance
+
+| Item | Details |
+|---|---|
+| Framework | PyTorch |
+| Main language | Python |
+| Recommended Python | 3.11 |
+| GPU support | CUDA-enabled NVIDIA GPUs |
+| Embedding backbones | ProtTransT5 and ESM-3 600M |
+| Prediction modes | Protein-side, peptide-side, joint, zero-shot |
+| Input | Raw sequence or FASTA-like protein/peptide sequence |
+| Output | HTML report, CSV residue scores, figures, and metadata |
+| Web interface | FastAPI/HTML and static demo page |
+| Model hub | [Hugging Face ProPepX](https://huggingface.co/syedkumailhussain/ProPepX/tree/main) |
+| Repository | [GitHub ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX) |
+
+---
+
+## Key capabilities
+
+| Capability | Supported |
+|---|:---:|
+| Protein binding-residue prediction | Yes |
+| Peptide binding-residue prediction | Yes |
+| Joint protein–peptide prediction | Yes |
+| Zero-shot prediction | Yes |
+| ProtTransT5 embeddings | Yes |
+| ESM-3 600M embeddings | Yes |
+| HTML prediction report | Yes |
+| Residue-level score export | Yes |
+| Interaction/attention-style visualization | Yes |
+| Web server | Yes |
+| Docker-ready deployment | Yes |
+| Training and fine-tuning scripts | Yes |
+
+---
+
+## Workflow
+
+```text
+Protein sequence + Peptide sequence
+              │
+              ▼
+Protein language model embeddings
+ProtTransT5 or ESM-3
+              │
+              ▼
+Intra-molecular encoders
+              │
+              ▼
+Bidirectional protein↔peptide co-attention
+              │
+              ▼
+Gated interaction-aware fusion
+              │
+              ▼
+Residue-level binding prediction
+              │
+              ▼
+CSV scores + heatmaps + interactive HTML report
+```
+
+---
+
+## Repository layout
+
+```text
+ProPepX/
+├── ProPepX/                         # Core model and prediction code
+├── app/                             # Optional FastAPI web-server backend
+├── Examples/                        # Example input sequences and demos
+├── ProPepX Model Weight & Test Dataset Features/
+├── ProPepX_Test_Datasets_results/
+├── docs/                            # Extended documentation
+├── ProPepX.png                      # Main architecture/workflow figure
+├── propepx.yml                      # Conda environment
+├── propepx_predict.py               # Command-line inference
+├── pretrain_propepx.py              # Pretraining script
+├── finetune_propepx.py              # Fine-tuning script
+├── index.html                       # Static web/demo page
+└── README.md
+```
 
 ---
 
 ## Installation
 
-### Option 1 — Conda installation
+Create the environment:
 
 ```bash
-git clone https://github.com/<YOUR-USERNAME>/ProPepX.git
+git clone https://github.com/SyedKumailHussainNaqvi/ProPepX.git
 cd ProPepX
 
 conda env create -f propepx.yml
 conda activate propepx
 ```
 
-### Option 2 — Update an existing environment
-
-```bash
-conda activate propepx
-pip install -U pip
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
-pip install transformers accelerate peft captum sentencepiece huggingface-hub safetensors tokenizers
-pip install numpy scipy scikit-learn pandas matplotlib plotly biopython h5py
-```
-
-### Hardware recommendation
-
-| Mode | Recommended device |
-|---|---|
-| CPU quick test | Works for small examples, slower |
-| Single GPU | NVIDIA GPU with CUDA support |
-| ESM-3 inference | GPU strongly recommended |
-| Batch inference | GPU recommended |
+For detailed installation, troubleshooting, and hardware notes, see [`docs/installation.md`](docs/installation.md).
 
 ---
 
 ## Quick start
 
-After installation, ProPepX can be tested using the included example runner.
-
-```bash
-python run_propepx_example.py
-```
-
-For direct command-line inference:
+Run a single joint protein–peptide prediction:
 
 ```bash
 mkdir -p results
@@ -118,43 +168,9 @@ python propepx_predict.py \
   --save_html "results/"
 ```
 
-Expected outputs:
+A typical single-pair prediction can complete in less than 100 seconds after packages, checkpoints, and embeddings are already available locally. Runtime depends on GPU, sequence length, embedding backend, and checkpoint loading.
 
-```text
-results/
-├── prediction_report.html
-├── protein_binding_scores.csv
-├── peptide_binding_scores.csv
-├── residue_probability_map.png
-├── interaction_heatmap.png
-└── summary.json
-```
-
-> A typical single-pair prediction can complete in less than 100 seconds after
-> packages, model checkpoints, and embeddings are already available locally.
-> Runtime depends on GPU, sequence length, embedding backend, and checkpoint loading.
-
----
-
-## Input format
-
-ProPepX accepts raw amino-acid sequences or FASTA-like sequences.
-
-### Protein
-
-```text
->Molecule_1
-MEMPQLSKWNQDSRNDAMENTLLVSHVLPNISVAQIHNALDGISFVQHFSLSTINLI...
-```
-
-### Peptide
-
-```text
->Peptide_1
-KNEEDESNDSDKEDGEISEDD
-```
-
-Only standard amino-acid characters are used for inference.
+More examples are available in [`docs/inference.md`](docs/inference.md).
 
 ---
 
@@ -162,96 +178,36 @@ Only standard amino-acid characters are used for inference.
 
 | Mode | Argument | Description |
 |---|---|---|
-| Protein-side | `--mode prot` | Predicts binding residues on the protein |
-| Peptide-side | `--mode pep` | Predicts binding residues on the peptide |
-| Joint | `--mode mode-GLOBAL` | Predicts both protein and peptide binding residues |
-| Zero-shot | `--mode zero-shot` | Runs zero-shot transfer prediction |
+| Protein-side | `--mode prot` | Predicts peptide-binding residues on the protein |
+| Peptide-side | `--mode pep` | Predicts protein-binding residues on the peptide |
+| Joint | `--mode mode-GLOBAL` | Predicts binding residues for both partners |
+| Zero-shot | `--mode zero-shot` | Runs transfer-learning prediction without task-specific fine-tuning |
 
 ---
 
-## Embedding backbones
+## Input and output
 
-| Embedding | Argument | Typical dimension |
-|---|---:|---:|
-| ProtTransT5 | `--embedding prottrans` | 1024 |
-| ESM-3 600M | `--embedding esm` | 1152 |
+| Input type | Supported format |
+|---|---|
+| Protein | Raw amino-acid sequence or FASTA-like sequence |
+| Peptide | Raw amino-acid sequence or FASTA-like sequence |
+| Amino acids | Standard amino-acid characters |
+| Batch mode | Supported when prepared input files/embeddings are provided |
 
----
-
-## Example commands
-
-### 1. Joint prediction with ProtTransT5
-
-```bash
-python propepx_predict.py \
-  --protein "MEMPQLSKWNQDSRNDAMENTLLVSHVLPNISVAQIHNALDGISFVQHFSLSTINLIKNDERSLWVHFKAGTNMDGAKEAVDGIQLDSNFTIESENPKIPTHTHPIPIFEIASSEQTCKNLLEKLIRFIDRASTKYSLPNDAAQRIEDRLKTHASMKDDDDKPTNFHDIRLSDLYAEYLRQVATFDFWTSKEYESLIALLQDSPAGYSRKKFNPSKEVGQEENIWLSDLENNFACLLEPENVDIKAKGALPVEDFINNELDSVIMKEDEQKYRCHVGTCAKLFLGPEFVRKHINKKHKDWLDHIKKVAICLYGYVLDPCRAMDPKVVSSAWSHPQFEK" \
-  --peptide "KNEEDESNDSDKEDGEISEDD" \
-  --embedding prottrans \
-  --mode mode-GLOBAL \
-  --dataset leads_ts251 \
-  --gpu_id 0 \
-  --save_html "results/"
-```
-
-### 2. Joint prediction with ESM-3
-
-```bash
-python propepx_predict.py \
-  --protein "MEMPQLSKWNQDSRNDAMENTLLVSHVLPNISVAQIHNALDGISFVQHFSLSTINLIKNDERSLWVHFKAGTNMDGAKEAVDGIQLDSNFTIESENPKIPTHTHPIPIFEIASSEQTCKNLLEKLIRFIDRASTKYSLPNDAAQRIEDRLKTHASMKDDDDKPTNFHDIRLSDLYAEYLRQVATFDFWTSKEYESLIALLQDSPAGYSRKKFNPSKEVGQEENIWLSDLENNFACLLEPENVDIKAKGALPVEDFINNELDSVIMKEDEQKYRCHVGTCAKLFLGPEFVRKHINKKHKDWLDHIKKVAICLYGYVLDPCRAMDPKVVSSAWSHPQFEK" \
-  --peptide "KNEEDESNDSDKEDGEISEDD" \
-  --embedding esm \
-  --mode mode-GLOBAL \
-  --dataset test167 \
-  --gpu_id 0 \
-  --save_html "results/"
-```
-
-### 3. Protein-side prediction
-
-```bash
-python propepx_predict.py \
-  --protein "MEMPQLSKWNQDSRNDAMENTLLVSHVLPNISVAQIHNALDGISFVQHFSLSTINLIKNDERSLWVHFKAGTNMDGAKEAVDGIQLDSNFTIESENPKIPTHTHPIPIFEIASSEQTCKNLLEKLIRFIDRASTKYSLPNDAAQRIEDRLKTHASMKDDDDKPTNFHDIRLSDLYAEYLRQVATFDFWTSKEYESLIALLQDSPAGYSRKKFNPSKEVGQEENIWLSDLENNFACLLEPENVDIKAKGALPVEDFINNELDSVIMKEDEQKYRCHVGTCAKLFLGPEFVRKHINKKHKDWLDHIKKVAICLYGYVLDPCRAMDPKVVSSAWSHPQFEK" \
-  --peptide "KNEEDESNDSDKEDGEISEDD" \
-  --embedding prottrans \
-  --mode prot \
-  --dataset ts092 \
-  --gpu_id 0 \
-  --save_html "results/"
-```
-
-### 4. Peptide-side prediction
-
-```bash
-python propepx_predict.py \
-  --protein "GGSEFSVGQGPAKTMEEASKRSYQFWDTQPVPKLGEVVNTHGPVEPDKDNIRQEPYTLPQGFTWDALDLGDRGVLKELYTLLNENYVEDDDNMFRFDYSPEFLLWALRPPGWLPQWHCGVRVVSSRKLVGFISAIPANIHIYDTEKKMVEINFLCVHKKLRSKRVAPVLIREITRRVHLEGIFQAVYTAGVVLPKPVGTCRYWHRSLNPRKLIEVKFSHLSRNMTMQRTMKLYRLPETPKTAGLRPMETKDIPVVHQLLTRYLKQFHLTPVMSQEEVEHWFYPQENIIDTFVVENANGEVTDFLSFYTLPSTIMNHPTHKSLKAAYSFYNVHTQTPLLDLMSDALVLAKMKGFDVFNALDLMENKTFLEKLKFGIGDGNLQYYLYNWKCPSMGAEKVGLVLQ" \
-  --peptide "ANCFSKPR" \
-  --embedding prottrans \
-  --mode pep \
-  --dataset camp_test231 \
-  --gpu_id 0 \
-  --save_html "results/"
-```
-
-### 5. Zero-shot prediction
-
-```bash
-python propepx_predict.py \
-  --protein "QIPASEQETLVRPKPLLLKLLKSVGAQKDTYTMKEVLFYLGQYIMTKRLYDEKQQHIVYCSNDLLGDLFGVPSFSVKEHRKIYTMIYRNL" \
-  --peptide "ETFSDLWKLLPEN" \
-  --embedding prottrans \
-  --mode zero-shot \
-  --dataset test167_zs \
-  --gpu_id 0 \
-  --save_html "results/"
-```
+| Output file | Description |
+|---|---|
+| `prediction_report.html` | Interactive prediction summary |
+| `protein_binding_scores.csv` | Protein residue-level probabilities and labels |
+| `peptide_binding_scores.csv` | Peptide residue-level probabilities and labels |
+| `residue_probability_map.png` | Residue-level probability visualization |
+| `interaction_heatmap.png` | Interaction/attention-style map |
+| `summary.json` | Run metadata and configuration |
 
 ---
 
 ## Web server
 
-ProPepX includes a browser interface for interactive prediction.
-
-### Static demo page
+Run the static demo page:
 
 ```bash
 python -m http.server 8000
@@ -263,51 +219,21 @@ Open:
 http://localhost:8000
 ```
 
-### Application server
-
-If your repository includes the `app/` server directory:
+Run the application server when the `app/` backend is available:
 
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-Open:
-
-```text
-http://localhost:8000
-```
-
-### Web-server workflow
-
-```text
-Protein sequence
-      ↓
-Peptide sequence
-      ↓
-Embedding backend
-      ↓
-Prediction mode
-      ↓
-Model checkpoint
-      ↓
-Interactive HTML report
-```
+Detailed web-server instructions are in [`docs/webserver.md`](docs/webserver.md).
 
 ---
 
 ## Docker
 
-If Docker files are included in your repository:
-
 ```bash
 docker build -t propepx:latest .
 docker run --gpus all -p 8000:8000 propepx:latest
-```
-
-Open:
-
-```text
-http://localhost:8000
 ```
 
 For CPU-only testing:
@@ -316,17 +242,17 @@ For CPU-only testing:
 docker run -p 8000:8000 propepx:latest
 ```
 
+More deployment notes are in [`docs/docker.md`](docs/docker.md).
+
 ---
 
 ## Models and datasets
 
 Pretrained/fine-tuned checkpoints and benchmark embeddings are hosted on Hugging Face:
 
-```text
-https://huggingface.co/syedkumailhussain/ProPepX
-```
-
-### Available checkpoints
+<p>
+  <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main"><b>Open ProPepX on Hugging Face</b></a>
+</p>
 
 | Task | Backbone | Dataset/setting |
 |---|---|---|
@@ -341,145 +267,73 @@ https://huggingface.co/syedkumailhussain/ProPepX
 | Zero-shot prediction | ESM-3 600M | TS167 zero-shot |
 | Zero-shot prediction | ProtTransT5 | TS167 zero-shot |
 
-### Suggested local organization
-
-```text
-checkpoints/
-├── joint/
-├── protein_side/
-├── peptide_side/
-└── zero_shot/
-
-data/
-├── embeddings/
-├── benchmark/
-└── examples/
-```
+Detailed checkpoint links are in [`docs/models.md`](docs/models.md).
 
 ---
 
-## Training and reproducibility
+## Benchmark summary
 
-The main training scripts are:
+Replace the placeholders below with the final manuscript values before submission.
 
-```text
-pretrain_propepx.py
-finetune_propepx.py
-```
-
-### Pretraining: protein-side model
-
-```bash
-python pretrain_propepx.py \
-  --mode prot \
-  --emb_dim 1024 \
-  --train_h5 "data/embeddings/Transfer_Learning_Training_embeddings.h5" \
-  --val_h5 "data/embeddings/Transfer_Learning_Validation_embeddings.h5" \
-  --ckpt_dir "checkpoints/pretrain/"
-```
-
-### Pretraining: peptide-side model
-
-```bash
-python pretrain_propepx.py \
-  --mode pep \
-  --emb_dim 1024 \
-  --train_h5 "data/embeddings/TL_train_Prottran_embeddings.h5" \
-  --val_h5 "data/embeddings/TL_validation_Prottran_embeddings.h5" \
-  --ckpt_dir "checkpoints/pretrain/"
-```
-
-### Pretraining: joint model
-
-```bash
-python pretrain_propepx.py \
-  --mode mode-GLOBAL \
-  --emb_dim 1024 \
-  --train_h5 "data/embeddings/Transfer_Learning_Training_embeddings.h5" \
-  --val_h5 "data/embeddings/TL_validation_Prottran_embeddings.h5" \
-  --ckpt_dir "checkpoints/pretrain/" \
-  --gpu_id 0
-```
-
-### Fine-tuning: protein-side model
-
-```bash
-python finetune_propepx.py \
-  --mode prot \
-  --train_h5 "data/embeddings/ESM_train_TS092_Dataset.h5" \
-  --val_h5 "data/embeddings/ESM_val_TS092_Dataset.h5" \
-  --test_h5 "data/embeddings/ESM_test_TS092_Dataset.h5" \
-  --pretrained_ckpt "checkpoints/pretrain/best_pretrain_prot.pt" \
-  --ckpt_dir "checkpoints/finetune/prot_ts092/" \
-  --emb_dim 1152 \
-  --epochs 3 \
-  --gpu_id 0
-```
-
-### Fine-tuning: peptide-side model
-
-```bash
-python finetune_propepx.py \
-  --mode pep \
-  --train_h5 "data/embeddings/CAMP_Train_Prottran_embeddings.h5" \
-  --val_h5 "data/embeddings/CAMP_Test_Prottran_embeddings.h5" \
-  --test_h5 "data/embeddings/CAMP_Test_Prottran_embeddings.h5" \
-  --pretrained_ckpt "checkpoints/pretrain/best_pretrain_pep.pt" \
-  --ckpt_dir "checkpoints/finetune/pep_camp231/" \
-  --emb_dim 1024 \
-  --epochs 3 \
-  --gpu_id 0
-```
-
-### Fine-tuning: joint model
-
-```bash
-python finetune_propepx.py \
-  --mode mode-GLOBAL \
-  --train_h5 "data/embeddings/TrainingDataset-KGIPA_prot1418_embedding.h5" \
-  --test_h5 "data/embeddings/Test167_embeddings.h5" \
-  --pretrained_ckpt "checkpoints/pretrain/best_pretrain_global.pt" \
-  --ckpt_dir "checkpoints/finetune/joint_test167/" \
-  --emb_dim 1024 \
-  --epochs 3 \
-  --n_splits 5 \
-  --gpu_id 0
-```
+| Dataset | Mode | Backbone | Precision | Recall | F1 | MCC | AUC |
+|---|---|---|---:|---:|---:|---:|---:|
+| TS092 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
+| TS125 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
+| TS251 | Protein-side / Joint | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
+| TS639 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
+| CAMP TS231 | Peptide-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
+| Test167 | Joint / Zero-shot | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
 
 ---
 
-## Output interpretation
+## Feature comparison
 
-| Output | Meaning |
-|---|---|
-| Residue probability | Probability that each residue participates in binding |
-| Binary label | Binding/non-binding residue prediction after thresholding |
-| HTML report | Interactive summary for proteins, peptides, and figures |
-| Heatmap | Residue-level interaction or interpretability map |
-| CSV file | Machine-readable prediction table |
-| JSON file | Reproducible run metadata |
-
-Example residue table:
-
-| Chain | Residue index | Residue | Score | Prediction |
-|---|---:|---:|---:|---|
-| Protein | 1 | M | 0.12 | Non-binding |
-| Protein | 2 | E | 0.79 | Binding |
-| Peptide | 1 | K | 0.66 | Binding |
+| Feature | Sequence-only predictors | Single-chain binding-site tools | ProPepX |
+|---|:---:|:---:|:---:|
+| Protein-side residue prediction | Partial | Yes | Yes |
+| Peptide-side residue prediction | Partial | No | Yes |
+| Joint protein–peptide prediction | No | No | Yes |
+| Bidirectional interaction modeling | No | No | Yes |
+| Protein language model embeddings | Partial | Partial | Yes |
+| Zero-shot prediction | No | No | Yes |
+| Residue-level interpretability maps | Limited | Limited | Yes |
+| Web-server interface | Tool-dependent | Tool-dependent | Yes |
+| Reproducible checkpoints and scripts | Tool-dependent | Tool-dependent | Yes |
 
 ---
 
 ## Reproducibility checklist
 
-Before submitting or reviewing results, verify:
+| Item | Status |
+|---|:---:|
+| Source code | Available |
+| Conda environment | Available |
+| Command-line inference | Available |
+| Web-server interface | Available |
+| Pretrained/fine-tuned checkpoints | Available on Hugging Face |
+| Test embeddings | Available on Hugging Face |
+| Training scripts | Available |
+| Fine-tuning scripts | Available |
+| Example commands | Available |
+| Docker instructions | Available |
+| Manuscript performance table | To be updated after final acceptance |
 
-- [ ] The Conda environment was created from `propepx.yml`.
-- [ ] The correct checkpoint was selected for the prediction mode.
-- [ ] The embedding backend matches the checkpoint family.
-- [ ] Protein and peptide sequences contain valid amino-acid characters.
-- [ ] Output directory exists and is writable.
-- [ ] GPU ID is valid when using CUDA.
-- [ ] Hugging Face model paths are synchronized with the local checkpoint paths.
+Training and fine-tuning commands are provided in [`docs/training.md`](docs/training.md). Full reproduction notes are in [`docs/reproducibility.md`](docs/reproducibility.md).
+
+---
+
+## Documentation
+
+| Document | Purpose |
+|---|---|
+| [`docs/installation.md`](docs/installation.md) | Environment setup, hardware, and troubleshooting |
+| [`docs/inference.md`](docs/inference.md) | CLI prediction examples for all modes |
+| [`docs/models.md`](docs/models.md) | Hugging Face checkpoint and dataset organization |
+| [`docs/webserver.md`](docs/webserver.md) | Static demo and FastAPI server usage |
+| [`docs/docker.md`](docs/docker.md) | Docker build and deployment |
+| [`docs/training.md`](docs/training.md) | Pretraining and fine-tuning commands |
+| [`docs/reproducibility.md`](docs/reproducibility.md) | Review checklist and validation notes |
+| [`docs/faq.md`](docs/faq.md) | Common installation and inference questions |
 
 ---
 
@@ -496,38 +350,25 @@ If you use ProPepX, please cite:
   note    = {Manuscript under review}
 }
 ```
+
 ---
 
 ## Contact
 
 For questions, issues, and collaboration:
 
-<table>
-<tr>
-<td>
-
 **Syed Kumail Hussain Naqvi**  
-Department of Physical-AI Convergence Engineering
+Department of Physical-AI Convergence Engineering  
+Jeonbuk National University, Republic of Korea  
 
-Jeonbuk National University, Republic of Korea
+Email: <a href="mailto:syedkumailhussainnaqvi@jbnu.ac.kr">syedkumailhussainnaqvi@jbnu.ac.kr</a>  
+GitHub: <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX">https://github.com/SyedKumailHussainNaqvi/ProPepX</a>  
+Hugging Face: <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">https://huggingface.co/syedkumailhussain/ProPepX/tree/main</a>  
 
- <a href="mailto:syedkumailhussainnaqvi@jbnu.ac.kr">syedkumailhussainnaqvi@jbnu.ac.kr</a>  
-
- <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX">GitHub Repository</a>  
-
-<a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">Hugging Face Model Hub</a>  
-
- <i>Manuscript under review.</i>
-
-</td>
-</tr>
-</table>
-
-Please open a **GitHub Issue** for reproducibility questions, installation problems, bug reports,
-or requests for additional examples.
+Please open a **GitHub Issue** for reproducibility questions, installation problems, bug reports, or requests for additional examples.
 
 ---
 
 ## License
 
-This software is copyrighted by [Bioinformatics Lab](https://nsclbio.jbnu.ac.kr/) @ Jeonbuk National 
+This software is copyrighted by [Bioinformatics Lab](https://nsclbio.jbnu.ac.kr/) @ Jeonbuk National University. Please update this section with the final license selected for public release.
