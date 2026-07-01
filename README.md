@@ -1,4 +1,4 @@
-# ProPepX
+# [ProPepX](https://syedkumailhussainnaqvi.github.io/ProPepX/)
 
 <p align="center">
   <a href="https://syedkumailhussainnaqvi.github.io/ProPepX/">
