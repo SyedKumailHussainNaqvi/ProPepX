@@ -516,8 +516,13 @@ For questions, issues, and collaboration:
 ```text
 Syed Kumail Hussain Naqvi 
 Jeonbuk National University
-**GitHub Repository:** [ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX)
-**Hugging Face Models:** [ProPepX Model Hub](https://huggingface.co/syedkumailhussain/ProPepX/tree/main)
+<p align="center">
+
+<a href="https://github.com/SyedKumailHussainNaqvi/ProPepX">GitHub Repository</a> •
+<a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">Hugging Face Models</a> •
+<a href="https://doi.org/DOI_HERE">Paper</a>
+
+</p>
 ```
 
 Please open a GitHub issue for reproducibility questions, installation problems,
