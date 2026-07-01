@@ -43,7 +43,7 @@ The repository provides:
 - an interactive HTML/web-server interface;
 - publication-ready prediction reports, residue-level scores, and visual outputs.
 
-> This repository accompanies the manuscript submitted to **Nature Machine Intelligence**.
+> This repository contains the official implementation of ProPepX, including the source code, pretrained models, web server, and reproducibility resources accompanying a manuscript currently under review.
 
 ---
 
