@@ -1,4 +1,4 @@
-# [pepTrans]([https://](https://syedkumailhussainnaqvi.github.io/ProPepX/))
+# [ProPepX](https://syedkumailhussainnaqvi.github.io/ProPepX/)
 
 <p align="center">
   <img src="ProPepX.png" alt="ProPepX conceptual workflow" width="850">
