@@ -483,66 +483,6 @@ Before submitting or reviewing results, verify:
 
 ---
 
-## Troubleshooting
-
-### CUDA is not detected
-
-```bash
-python - <<'PY'
-import torch
-print("CUDA available:", torch.cuda.is_available())
-print("GPU:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "CPU")
-PY
-```
-
-If CUDA is unavailable, set:
-
-```bash
---gpu_id -1
-```
-
-or run on CPU if supported by your local script configuration.
-
-### Hugging Face checkpoint is not found
-
-Install the Hugging Face CLI:
-
-```bash
-pip install -U huggingface-hub
-```
-
-Download manually:
-
-```bash
-huggingface-cli download syedkumailhussain/ProPepX \
-  --local-dir checkpoints/huggingface \
-  --local-dir-use-symlinks False
-```
-
-### Sequence is too long
-
-Use sequences within the supported maximum length of the trained model. For the
-current release, long protein and peptide inputs should be filtered or truncated
-according to the benchmark preprocessing used during training.
-
----
-
-## Roadmap
-
-- [x] Core ProPepX model implementation
-- [x] Protein-side binding residue prediction
-- [x] Peptide-side binding residue prediction
-- [x] Joint protein–peptide prediction
-- [x] Zero-shot prediction
-- [x] Hugging Face checkpoint release
-- [x] Interactive HTML report
-- [x] Web-server prototype
-- [ ] Public hosted web server
-- [ ] Expanded API documentation
-- [ ] Colab notebook for zero-shot inference
-
----
-
 ## Citation
 
 If you use ProPepX, please cite:
@@ -576,8 +516,8 @@ For questions, issues, and collaboration:
 ```text
 Syed Kumail Hussain Naqvi 
 Jeonbuk National University
-GitHub: [https://github.com/<YOUR-USERNAME>/ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX)
-Hugging Face: [https://huggingface.co/syedkumailhussain/ProPepX](https://huggingface.co/syedkumailhussain/ProPepX/tree/main)
+**GitHub Repository:** [ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX)
+**Hugging Face Models:** [ProPepX Model Hub](https://huggingface.co/syedkumailhussain/ProPepX/tree/main)
 ```
 
 Please open a GitHub issue for reproducibility questions, installation problems,
