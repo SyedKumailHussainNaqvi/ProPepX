@@ -371,4 +371,4 @@ Please open a **GitHub Issue** for reproducibility questions, installation probl
 
 ## License
 
-This software is copyrighted by [Bioinformatics Lab](https://nsclbio.jbnu.ac.kr/) @ Jeonbuk National University. Please update this section with the final license selected for public release.
+This software is copyrighted by [Bioinformatics Lab](https://nsclbio.jbnu.ac.kr/) @ Jeonbuk National University.
