@@ -367,8 +367,8 @@ If you use ProPepX, please cite:
 
 ```bibtex
 @article{propepx2026,
-  title   = {ProPepX: interaction-aware transfer learning for protein-peptide binding residue prediction},
-  author  = {Hussain, Syed Kumail and Chandra, Sourav and collaborators},
+  title   = {ProPepX: A unified, interpretable, bidirectional interaction-aware transfer-learning framework for residue-level protein–peptide binding-site prediction},
+  author  = {Naqvi, Syed Kumail Hussain and Sourav, Chandra and Chong, Kil To and Tayara, Hilal},
   journal = {Nature Machine Intelligence},
   year    = {2026},
   note    = {Manuscript under review}
