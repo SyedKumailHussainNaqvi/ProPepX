@@ -1,4 +1,4 @@
-# ProPepX
+# [pepTrans]([https://](https://syedkumailhussainnaqvi.github.io/ProPepX/))
 
 <p align="center">
   <img src="ProPepX.png" alt="ProPepX conceptual workflow" width="850">
@@ -496,17 +496,6 @@ If you use ProPepX, please cite:
   note    = {Manuscript under review}
 }
 ```
-
----
-
-## License
-
-Please see the `LICENSE` file for usage terms.
-
-If this repository includes pretrained weights, datasets, or third-party models,
-their use may also be governed by the licenses of the original providers
-including PyTorch, Hugging Face, ProtTrans, ESM, and associated benchmark datasets.
-
 ---
 
 ## Contact
@@ -535,3 +524,9 @@ Jeonbuk National University, Republic of Korea
 
 Please open a **GitHub Issue** for reproducibility questions, installation problems, bug reports,
 or requests for additional examples.
+
+---
+
+## License
+
+This software is copyrighted by [Bioinformatics Lab](https://nsclbio.jbnu.ac.kr/) @ Jeonbuk National 
