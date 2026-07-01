@@ -513,14 +513,25 @@ including PyTorch, Hugging Face, ProtTrans, ESM, and associated benchmark datase
 
 For questions, issues, and collaboration:
 
+<table>
+<tr>
+<td>
+
 **Syed Kumail Hussain Naqvi**  
-Jeonbuk National University
+Department of Physical-AI Convergence Engineering 
+Jeonbuk National University, Republic of Korea
 
-<p align="center">
-  <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX">GitHub Repository</a> •
-  <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">Hugging Face Models</a> •
-  <a href="https://doi.org/DOI_HERE">Paper</a>
-</p>
+ <a href="mailto:syedkumailhussainnaqvi@jbnu.ac.kr">syedkumailhussainnaqvi@jbnu.ac.kr</a>  
 
-Please open a GitHub issue for reproducibility questions, installation problems,
+ <a href="https://github.com/SyedKumailHussainNaqvi/ProPepX">GitHub Repository</a>  
+
+<a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">Hugging Face Model Hub</a>  
+
+ <i>Manuscript under review at Nature Machine Intelligence.</i>
+
+</td>
+</tr>
+</table>
+
+Please open a **GitHub Issue** for reproducibility questions, installation problems, bug reports,
 or requests for additional examples.
