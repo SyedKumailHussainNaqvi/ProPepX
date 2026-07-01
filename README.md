@@ -34,7 +34,7 @@
 
 **ProPepX** predicts binding residues in protein–peptide interactions from protein and peptide sequences. It combines protein-language-model embeddings with intra-molecular encoders, bidirectional protein↔peptide co-attention, gated fusion, and residue-level output heads. Unlike sequence-only predictors that process binding partners independently, ProPepX evaluates protein and peptide representations in a shared interaction-aware context.
 
-The repository provides command-line inference, a browser-based interface, pretrained and fine-tuned checkpoints, test embeddings, training scripts, and reproducibility instructions for manuscript review.
+This repository contains the official implementation of ProPepX, including the source code, command-line inference, a browser-based interface, pretrained and fine-tuned checkpoints, test embeddings, training scripts, and reproducibility instructions for manuscript review.
 
 ---
 
@@ -50,22 +50,20 @@ The repository provides command-line inference, a browser-based interface, pretr
 
 ---
 
-## At a glance
+## Highlights
 
-| Item | Details |
+| Capability | Description |
 |---|---|
-| Framework | PyTorch |
-| Main language | Python |
-| Recommended Python | 3.11 |
-| GPU support | CUDA-enabled NVIDIA GPUs |
-| Embedding backbones | ProtTransT5 and ESM-3 600M |
-| Prediction modes | Protein-side, peptide-side, joint, zero-shot |
-| Input | Raw sequence or FASTA-like protein/peptide sequence |
-| Output | HTML report, CSV residue scores, figures, and metadata |
-| Web interface | FastAPI/HTML and static demo page |
-| Model hub | [Hugging Face ProPepX](https://huggingface.co/syedkumailhussain/ProPepX/tree/main) |
-| Repository | [GitHub ProPepX](https://github.com/SyedKumailHussainNaqvi/ProPepX) |
+| Protein-side prediction | Predicts peptide-binding residues on the protein chain |
+| Peptide-side prediction | Predicts protein-binding residues on the peptide chain |
+| Joint prediction | Predicts binding residues for both partners in a unified setting |
+| Zero-shot prediction | Runs transfer-learning inference without task-specific fine-tuning |
+| Embedding backbones | Supports ProtTransT5 and ESM-3 embeddings |
+| Interpretability | Produces residue-level confidence, attention-style maps, and HTML reports |
+| Web server | Provides a browser-based interface for non-programming users |
+| Reproducibility | Includes training, fine-tuning, inference, and validation commands |
 
+---
 ---
 
 ## Key capabilities
@@ -86,65 +84,26 @@ The repository provides command-line inference, a browser-based interface, pretr
 | Training and fine-tuning scripts | Yes |
 
 ---
-
-## Workflow
-
-```text
-Protein sequence + Peptide sequence
-              │
-              ▼
-Protein language model embeddings
-ProtTransT5 or ESM-3
-              │
-              ▼
-Intra-molecular encoders
-              │
-              ▼
-Bidirectional protein↔peptide co-attention
-              │
-              ▼
-Gated interaction-aware fusion
-              │
-              ▼
-Residue-level binding prediction
-              │
-              ▼
-CSV scores + heatmaps + interactive HTML report
-```
-
----
-
-## Repository layout
-
-```text
-ProPepX/
-├── ProPepX/                         # Core model and prediction code
-├── app/                             # Optional FastAPI web-server backend
-├── Examples/                        # Example input sequences and demos
-├── ProPepX Model Weight & Test Dataset Features/
-├── ProPepX_Test_Datasets_results/
-├── docs/                            # Extended documentation
-├── ProPepX.png                      # Main architecture/workflow figure
-├── propepx.yml                      # Conda environment
-├── propepx_predict.py               # Command-line inference
-├── pretrain_propepx.py              # Pretraining script
-├── finetune_propepx.py              # Fine-tuning script
-├── index.html                       # Static web/demo page
-└── README.md
-```
-
----
-
 ## Installation
 
-Create the environment:
+### Option 1 — Conda installation
 
 ```bash
-git clone https://github.com/SyedKumailHussainNaqvi/ProPepX.git
+git clone https://github.com/<YOUR-USERNAME>/ProPepX.git
 cd ProPepX
 
 conda env create -f propepx.yml
 conda activate propepx
+```
+
+### Option 2 — Update an existing environment
+
+```bash
+conda activate propepx
+pip install -U pip
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu124
+pip install transformers accelerate peft captum sentencepiece huggingface-hub safetensors tokenizers
+pip install numpy scipy scikit-learn pandas matplotlib plotly biopython h5py
 ```
 
 For detailed installation, troubleshooting, and hardware notes, see [`docs/installation.md`](docs/installation.md).
@@ -153,7 +112,13 @@ For detailed installation, troubleshooting, and hardware notes, see [`docs/insta
 
 ## Quick start
 
-Run a single joint protein–peptide prediction:
+After installation, ProPepX can be tested using the included example runner.
+
+```bash
+python run_propepx_example.py
+```
+
+For direct command-line inference:
 
 ```bash
 mkdir -p results
@@ -168,12 +133,45 @@ python propepx_predict.py \
   --save_html "results/"
 ```
 
+Expected outputs:
+
+```text
+results/
+├── prediction_report.html
+├── protein_binding_scores.csv
+├── peptide_binding_scores.csv
+├── residue_probability_map.png
+├── interaction_heatmap.png
+└── summary.json
+```
+
 A typical single-pair prediction can complete in less than 100 seconds after packages, checkpoints, and embeddings are already available locally. Runtime depends on GPU, sequence length, embedding backend, and checkpoint loading.
 
 More examples are available in [`docs/inference.md`](docs/inference.md).
 
 ---
 
+## Input format
+
+ProPepX accepts raw amino-acid sequences or FASTA-like sequences.
+
+### Protein
+
+```text
+>Molecule_1
+MEMPQLSKWNQDSRNDAMENTLLVSHVLPNISVAQIHNALDGISFVQHFSLSTINLI...
+```
+
+### Peptide
+
+```text
+>Peptide_1
+KNEEDESNDSDKEDGEISEDD
+```
+
+Only standard amino-acid characters are used for inference.
+
+---
 ## Prediction modes
 
 | Mode | Argument | Description |
@@ -184,7 +182,14 @@ More examples are available in [`docs/inference.md`](docs/inference.md).
 | Zero-shot | `--mode zero-shot` | Runs transfer-learning prediction without task-specific fine-tuning |
 
 ---
+## Embedding backbones
 
+| Embedding | Argument | Typical dimension |
+|---|---:|---:|
+| ProtTransT5 | `--embedding prottrans` | 1024 |
+| ESM-3 600M | `--embedding esm` | 1152 |
+
+---
 ## Input and output
 
 | Input type | Supported format |
@@ -337,6 +342,40 @@ Training and fine-tuning commands are provided in [`docs/training.md`](docs/trai
 
 ---
 
+## Output interpretation
+
+| Output | Meaning |
+|---|---|
+| Residue probability | Probability that each residue participates in binding |
+| Binary label | Binding/non-binding residue prediction after thresholding |
+| HTML report | Interactive summary for proteins, peptides, and figures |
+| Heatmap | Residue-level interaction or interpretability map |
+| CSV file | Machine-readable prediction table |
+| JSON file | Reproducible run metadata |
+
+Example residue table:
+
+| Chain | Residue index | Residue | Score | Prediction |
+|---|---:|---:|---:|---|
+| Protein | 1 | M | 0.12 | Non-binding |
+| Protein | 2 | E | 0.79 | Binding |
+| Peptide | 1 | K | 0.66 | Binding |
+
+---
+
+## Reproducibility checklist
+
+Before submitting or reviewing results, verify:
+
+- [ ] The Conda environment was created from `propepx.yml`.
+- [ ] The correct checkpoint was selected for the prediction mode.
+- [ ] The embedding backend matches the checkpoint family.
+- [ ] Protein and peptide sequences contain valid amino-acid characters.
+- [ ] Output directory exists and is writable.
+- [ ] GPU ID is valid when using CUDA.
+- [ ] Hugging Face model paths are synchronized with the local checkpoint paths.
+
+---
 ## Citation
 
 If you use ProPepX, please cite:
