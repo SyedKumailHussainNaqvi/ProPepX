@@ -276,21 +276,6 @@ Detailed checkpoint links are in [`docs/models.md`](docs/models.md).
 
 ---
 
-## Benchmark summary
-
-Replace the placeholders below with the final manuscript values before submission.
-
-| Dataset | Mode | Backbone | Precision | Recall | F1 | MCC | AUC |
-|---|---|---|---:|---:|---:|---:|---:|
-| TS092 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-| TS125 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-| TS251 | Protein-side / Joint | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-| TS639 | Protein-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-| CAMP TS231 | Peptide-side | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-| Test167 | Joint / Zero-shot | ESM-3 / ProtTransT5 | TBD | TBD | TBD | TBD | TBD |
-
----
-
 ## Feature comparison
 
 | Feature | Sequence-only predictors | Single-chain binding-site tools | ProPepX |
