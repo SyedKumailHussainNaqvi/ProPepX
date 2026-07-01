@@ -1,7 +1,7 @@
 # ProPepX
 
 <p align="center">
-  <img src="ProPepX.tif" alt="ProPepX conceptual workflow" width="850">
+  <img src="ProPepX.png" alt="ProPepX conceptual workflow" width="850">
 </p>
 
 <p align="center">
