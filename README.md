@@ -527,7 +527,7 @@ Jeonbuk National University, Republic of Korea
 
 <a href="https://huggingface.co/syedkumailhussain/ProPepX/tree/main">Hugging Face Model Hub</a>  
 
- <i>Manuscript under review at Nature Machine Intelligence.</i>
+ <i>Manuscript under review.</i>
 
 </td>
 </tr>
